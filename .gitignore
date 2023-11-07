@@ -1,0 +1,39 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Environment and virtual environment files
+.env
+.venv
+env/
+venv/
+*.env
+
+# Compiled Python files
+*.pyc
+*.pyo
+
+# Python cache files
+__pycache__/
+
+# Logs and backups
+*.log
+*.log.*
+*.bak
+*.swp
+
+# Site packages
+site-packages/
+
+# Configuration files
+*.ini
+*.cfg
+*.conf
