@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Monika Valeja",
+        "adhar": "789456123453",
+        "pan_no": "LKJHG7474K",
+        "address": "Bhopal",
+        "photograph": "google.com",
+        "account_no": "ACC__77268",
+        "balance": 8703.33,
+        "transaction": [
+            {
+                "type": "credit",
+                "date": "07/11/2023 18:11:50",
+                "amount": 10000.0
+            },
+            {
+                "type": "debit",
+                "date": "07/11/2023 18:12:01",
+                "amount": 100.0
+            },
+            {
+                "type": "ATM debit",
+                "date": "07/11/2023 18:28:42",
+                "amount": 500.0
+            },
+            {
+                "type": "EMI debit",
+                "date": "07/11/2023 19:13:37",
+                "amount": 96.67
+            }
+        ],
+        "ATM": {
+            "ATM_card_no": "4400419868424429",
+            "issue_date": "2023-11-07",
+            "expire_date": "2028-11-05",
+            "cvv": 476,
+            "pin": "8899"
+        },
+        "Loan_Account": [
+            {
+                "loan_account_no": 27214769117,
+                "total_amount": 1500.0,
+                "emi": 39.48,
+                "no_of_emi": 84,
+                "roi": "12%",
+                "total_months": 84,
+                "outstanding_balance": 3316.02
+            },
+            {
+                "loan_account_no": 49358403261,
+                "total_amount": 1000.0,
+                "emi": 96.67,
+                "no_of_emi": 12,
+                "roi": "16%",
+                "total_months": 12,
+                "outstanding_balance": 1063.33
+            }
+        ]
+    }
+]

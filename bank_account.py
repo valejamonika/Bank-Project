@@ -23,11 +23,11 @@ class BankAccount():
         return self.account_no
 
     def write_data(self):
-        with open("data.json", "w") as json_file:
+        with open("bank_data.json", "w") as json_file:
             json_file.write(json.dumps(self.holder_data))
 
     def read_data(self):
-        with open("data.json", "r") as file:
+        with open("bank_data.json", "r") as file:
             r_data = json.load(file)
             return r_data
 
@@ -69,7 +69,7 @@ class BankAccount():
             now = datetime.now()
             t_time = now.strftime("%d/%m/%Y %H:%M:%S")
             transaction_data = {"type": "credit", "date": t_time, "amount": amount}
-            self.statement(transaction_data, a_no)
+            self.statement(a_no, transaction_data)
 
     def withdraw_cash(self, a_no, amount):
         record = self.search_customer(a_no)
@@ -80,7 +80,7 @@ class BankAccount():
             now = datetime.now()
             t_time = now.strftime("%d/%m/%Y %H:%M:%S")
             transaction_data = {"type": "debit", "date": t_time, "amount": amount}
-            self.statement(transaction_data, a_no)
+            self.statement(a_no, transaction_data)
 
     def check_balance(self, a_no):
         record = self.search_customer(a_no)

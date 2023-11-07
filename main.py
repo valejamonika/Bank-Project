@@ -97,16 +97,16 @@ while True:
         abj.gen_new_pin(atm_card_no, old_pin)
     elif choose == 8:
         atm_card_no = str(input("Enter Your ATM Card Number:"))
-        pin = int(input("Enter your atm pin:"))
+        pin = str(input("Enter your atm pin:"))
         abj.atm_withdraw(atm_card_no, pin)
     elif choose == 9:
         account_no = str(input("Please enter your account no:"))
         lbj.open_loan_account(account_no)
     elif choose == 10:
-        loan_account_no = int(input("Please enter your account no:"))
+        loan_account_no = int(input("Please enter your loan account no:"))
         lbj.deposite_emi(loan_account_no)
     elif choose == 11:
-        loan_account_no = int(input("Please enter your account no:"))
+        loan_account_no = int(input("Please enter your loan account no:"))
         lbj.outstanding_balance(loan_account_no)
     elif choose == 12:
         account_no = str(input("Please enter your account no:"))

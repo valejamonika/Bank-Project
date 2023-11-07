@@ -1,5 +1,5 @@
 import random
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from bank_account import BankAccount
 
 
@@ -90,6 +90,11 @@ class AtmCard(BankAccount):
                 self.holder_data[self.holder_data.index(k)]["balance"] -= amt
                 self.write_data()
                 print("Amount", amt, "is debited from ATM No.-", atm_no)
+                now = datetime.now()
+                t_time = now.strftime("%d/%m/%Y %H:%M:%S")
+                transaction_data = {"type": "ATM debit", "date": t_time, "amount": amt}
+                account_no = k.get('account_no')
+                self.statement(account_no, transaction_data)
                 break
         else:
             print("Atm and Pin Does Not Matched!!!...")

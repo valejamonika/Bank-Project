@@ -1,5 +1,6 @@
 import random
 from bank_account import BankAccount
+from datetime import datetime
 
 
 """Loan Account class inherits BankAccount class and
@@ -12,9 +13,9 @@ class Loan_Account(BankAccount):
     def open_loan_account(self, a_no=None):
         customer = self.search_customer(a_no)
         if customer:
-            user_input_amount = float(input("Enter the Loan Amount: "))
-            if customer["balance"] * 5 < user_input_amount:
-                user_input_amount = user_input_amount * 0.75
+            self.user_input_amount = float(input("Enter the Loan Amount: "))
+            if customer["balance"] * 5 < self.user_input_amount:
+                self.user_input_amount = self.user_input_amount * 0.75
 
         type_of_loan = int(input("""
         Enter the type of loan:
@@ -44,7 +45,7 @@ class Loan_Account(BankAccount):
         total_year = loan_type_info["total_years"]
 
         # Calculate loan parameters
-        amount = round(user_input_amount * (1 + eval(roi.strip('%')) / 100) ** total_year, 2)
+        amount = round(self.user_input_amount * (1 + eval(roi.strip('%')) / 100) ** total_year, 2)
         emi = round(amount / (12 * total_year), 2)
 
         # Generate a random loan account number
@@ -53,7 +54,7 @@ class Loan_Account(BankAccount):
         # Update the customer's data with loan details
         loan_data = {
             "loan_account_no": loan_account_no,
-            "total_amount": user_input_amount,
+            "total_amount": self.user_input_amount,
             "emi": emi,
             "no_of_emi": total_year * 12,
             "roi": roi,
@@ -64,7 +65,8 @@ class Loan_Account(BankAccount):
         if loan_data_list:
             loan_data_list.append(loan_data)
         else:
-            loan_data_list = [loan_data]
+            # loan_data_list = [loan_data]
+            self.holder_data[self.holder_data.index(customer)]["Loan_Account"] = [loan_data]
         self.write_data()
         print("Your Loan account Is Successfully Opened ! Loan Account No - ", loan_account_no)
 
@@ -103,6 +105,10 @@ class Loan_Account(BankAccount):
         self.holder_data[self.holder_data.index(old_cust2)] = customer
         self.write_data()
         print("Your EMI Deposited..!!!")
+        now = datetime.now()
+        t_time = now.strftime("%d/%m/%Y %H:%M:%S")
+        transaction_data = {"type": "EMI debit", "date": t_time, "amount": amt_deposite}
+        self.statement(customer['account_no'], transaction_data)
 
     def outstanding_balance(self, loan_ac_no=None):
         loan_customer, customer = self.search_loan_customer(loan_ac_no)
